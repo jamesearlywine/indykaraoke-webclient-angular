@@ -1,0 +1,22 @@
+{
+  "name": "assets",
+  "homepage": "https://github.com/jamesearlywine/indykaraoke-webclient-angular",
+  "authors": [
+    "James Earlywine <james@esilogix.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "spinjs": "2.3.1"
+  }
+}

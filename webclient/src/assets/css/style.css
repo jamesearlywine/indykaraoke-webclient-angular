@@ -1,0 +1,455 @@
+/**
+ * General Stuff
+ */
+html, body {
+    height: 100%;
+}
+ 
+body {
+  min-width: 360px;
+  /*
+  background-color: rgba(32, 0, 1, .7);
+  background-color: #D40007;
+  background-color: #AD0309;
+  background-color: #C9000A;
+  background-color: rgba(201, 0, 10, .7);
+  */
+  background-color: #200001;
+  overflow-x: hidden;
+}
+.section-gradient-break 
+{
+  position: relative;
+  background-color: #200001;
+  
+}
+
+
+.section-gradient-break-inner {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+32,200001+62,200001+100&0+0,1+42,1+57,1+100 */
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.76) 32%, rgba(11,0,0,1) 42%, rgba(27,0,1,1) 57%, rgba(32,0,1,1) 62%, rgba(32,0,1,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.76) 32%,rgba(11,0,0,1) 42%,rgba(27,0,1,1) 57%,rgba(32,0,1,1) 62%,rgba(32,0,1,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.76) 32%,rgba(11,0,0,1) 42%,rgba(27,0,1,1) 57%,rgba(32,0,1,1) 62%,rgba(32,0,1,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#200001',GradientType=0 ); /* IE6-9 */
+  height: 70px;
+  width: 100%;
+  position: relative;
+  top: -25px;
+  left: 0px;
+  z-index: 100;
+  background-color: transparent;
+}
+
+/**
+ * Functional CSS
+ */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.clickable
+{
+  cursor: pointer;
+}
+
+
+/**
+ * Nav Header Stuff
+ */
+#mainNav
+{
+  min-width: 280px;
+}
+
+@media (max-width: 479px) { .navbar-brand { min-width: 73%; } }
+@media (min-width: 480px) and (max-width: 767px) { .navbar-brand { min-width: 80%; } }
+@media (min-width: 768px) { .navbar-brand { min-width: 50%; } }
+
+
+section {
+  min-height: 1000px; 
+}
+
+/**
+ * Home section
+ */
+#homeHeading {
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-family: "Courier New", Courier, monospace;
+}
+
+
+
+
+
+
+/**
+ * Map Stuff
+ */
+karaoke-map,
+.karaoke-map
+{
+  display: block;
+  height: 450px;
+  background-color: #200001;
+}
+.karaoke-map-container 
+{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  height: 450px;
+}
+
+@media (max-width: 480px) {
+  karaoke-map,
+  .karaoke-map
+  {
+    height: 225px;
+  } 
+  .karaoke-map-container 
+  {
+    height: 235px;
+  }
+  karaoke-map .karaoke-map-container map 
+  {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
+@media (min-width: 481px) and (max-width:799px) {
+  karaoke-map,
+  .karaoke-map
+  {
+    height: 325px;
+  } 
+  .karaoke-map-container 
+  {
+    height: 335px;
+  }
+  karaoke-map .karaoke-map-container map 
+  {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
+
+
+
+.view-link {
+  display:none !important;
+  pointer-events: none !important;
+}
+
+.gm-iv-address-link a {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+
+}
+
+.gm-iv-marker {
+  pointer-events: none !important;
+}
+/*
+@media only screen and (max-width: 768px) {
+  .karaoke-map-container {
+    width: 90%;
+  }
+}
+*/
+
+/**
+ * Sticky Map
+ */
+ 
+@media (max-width: 768px)
+{
+  karaoke-map.sticky .karaoke-map-container
+  {
+    position: fixed;
+    top: 103px;
+    left: 0px;
+    z-index: 1000;
+    background-color: #200001;
+  }
+}
+
+.map-reset
+{
+  /* pulled from google ui control */
+  -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  user-select: none; 
+  box-shadow: 0px 0px 2px #CCC;
+  border-radius: 2px; 
+  cursor: pointer; 
+  text-align: center;
+  font-size:18px;
+  margin-right: 10px;
+  background:#FFF;
+  color:#676767;
+  width:auto;
+  padding:4px 2px;
+}
+
+.map-reset:hover
+{
+  color:#000;
+}
+
+/**
+ * Info Windows
+ */
+map-info-window 
+{
+  pointer-events: none;
+}
+.map-info-window 
+{
+  color: black;
+}
+.map-info-window .picture-column
+{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.map-info-window .venue-logo-image-container,
+.map-info-window .venue-logo-image-none-container
+{
+   display: block;
+   position: relative;
+   min-width: 55px;
+}
+.map-info-window .venue-logo-image-none-container
+{
+  
+}
+.map-info-window .venue-logo-image-none,
+.map-info-window .venue-logo-image
+{
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: top;
+}
+.map-info-window .venue-logo-image
+{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.map-info-window .venue-details-column
+{
+  text-align: left;
+}
+
+.gm-style-iw > div
+{
+  overflow: visible !important;
+  /* min-width: 200px !important; */
+}
+
+
+/**
+ * Events list view
+ */
+.events-list-view 
+{
+  margin-top: 18px;
+}
+.events-list-item 
+{
+  min-height: 70px;
+  width: 100%;
+  background-color: #eee;
+  border-radius: 12px;
+  box-shadow: 2px 2px 1px #333;
+  padding: 1px 14px;
+  margin-top: 4px;
+  margin-bottom: 7px;
+  cursor: pointer;
+  color: #222;
+  text-align: left;
+  font-size: 1em;
+  font-weight: 500;
+}
+.events-list-item:hover 
+{
+  -webkit-box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
+  -moz-box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
+  box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
+}
+
+.events-list-item.selected
+{
+  background-color: #fafafa;
+}
+.events-list-item .title-row
+{
+  color: #200001;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+
+
+
+/**
+ * Share Videos section
+ */
+section#share-videos
+{
+  padding-top: 100px;
+}
+
+/**
+ * Day Selector
+ */
+.day-selectors-container,
+.day-selectors,
+.day-selectors-mobile
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.day-selectors-container div
+{
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  margin-top: 7px;
+  margin-bottom: 4px;
+  /* font-family: "Courier New", Courier, monospace; */
+  font-weight: 550;
+  text-transform: uppercase;
+}
+.bottom-selector .day-selectors-container div {
+  margin-top: -7px;
+  margin-bottom: 0px;
+}
+
+@media only screen and (min-width: 769px) {
+  
+
+  .day-selectors div:before,
+  .day-selectors-mobile div:before
+  {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  /* .day-selectors div:hover:before,
+  .day-selectors-mobile div:hover:before, */
+  .day-selectors-container.not-sticky .day-selectors div.selected:before,
+  .day-selectors-container.not-sticky .day-selectors-mobile div.selected:before
+  {
+    border: #fff solid 1px;
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+@media only screen and (min-width: 621px) {
+  .day-selectors, .day-selectors div { display: flex;}
+  .day-selectors-mobile { display: none;}
+  
+}
+@media only screen and (max-width: 620px) {
+  .day-selectors { display: none;}
+  .day-selectors-mobile, .day-selectors-mobile div { display: flex;}
+}
+@media only screen and (max-width: 768px) {
+  
+  .day-selectors-container
+  {
+      background-color: rgb(255, 255, 255);
+      color: rgb(32, 0, 1);
+  }
+  .top-selector .day-selectors-container
+  {
+    margin-bottom: 4px;
+  }
+  .day-selectors-container .day-selectors div,
+  .day-selectors-container .day-selectors-mobile div
+  {
+    padding: 6px;
+  }
+  
+  .day-selectors-container .day-selectors div.selected,
+  .day-selectors-container .day-selectors-mobile div.selected
+  {
+    background-color: rgb(32, 0, 1);
+    color: rgb(255, 255, 255);
+  }
+  
+  .bottom-selector 
+  {
+    display: none;
+  }
+
+}
+
+
+/**
+ * Sticky
+ */
+day-selector.top-selector.sticky
+{
+  height: 58px;
+  display: block;
+}
+day-selector.top-selector.sticky .day-selectors-container
+{
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(32, 0, 1);
+  z-index: 100;
+}
+
+.day-selectors-container.sticky .day-selectors div,
+.day-selectors-container.sticky .day-selectors-mobile div
+{
+  padding: 6px;
+}
+
+.day-selectors-container.sticky .day-selectors div.selected,
+.day-selectors-container.sticky .day-selectors-mobile div.selected
+{
+  background-color: rgb(32, 0, 1);
+  color: rgb(255, 255, 255);
+}
+
+
+#day-selector-sticky-binder
+{
+  display: block;
+  height: 0px;
+  position: relative;
+}
