@@ -1,0 +1,108 @@
+/* navbar container */
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20000;
+  cursor: pointer;
+  width: 100%;
+  border-bottom: solid 1px;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  textarea, input, button { outline: none; }
+}
+
+/* navbar */
+#main-nav {
+  padding: 0px;
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  -webkit-transition: color 0.35s, background-color 0.35s;
+  -moz-transition: color 0.35s, background-color 0.35s;
+  transition: color 0.35s, background-color 0.35s;
+
+  .navbar-header {
+    width: 100%;
+  }
+
+  #logo-text {
+    text-transform: none;
+    margin: 8px 0px 8px 0px;
+    color: rgba(255, 255, 255, 0.7)
+  }
+  #logo-text:hover {
+    color: white;
+  }
+
+  button.navmenu {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin: 8px 0px 8px 0px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    border-color: #ddd;
+    cursor: pointer;
+    -webkit-transition: color 0.15s, background-color 0.15s;
+    -moz-transition: color 0.15s, background-color 0.15s;
+    transition: color 0.15s, background-color 0.15s;
+  }
+  button.navmenu:hover {
+    color: white;
+  }
+  &.sticky {
+    background-color: white;
+
+    #logo-text {
+      color: #200001;
+    }
+
+    button.navmenu {
+      color: #222222;
+    }
+    button.navmenu:hover {
+      background-color: #ddd;
+    }
+  }
+}
+@media (max-width: 767px) {
+  #main-nav {
+    background-color: white;
+
+    #logo-text,
+    #logo-text:hover {
+      color: #200001;
+    }
+
+    button.navmenu,
+    button.navmenu:hover,
+    &.sticky button.navmenu,
+    &.sticky button.navmenu:hover {
+      color: #222222;
+    }
+    button.navmenu:hover {
+      background-color: #ddd;
+    }
+  }
+}
+
+/* menu */
+#main-nav {
+  #navbar-menu {
+    width: 100%;
+    background-color: white;
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    li {
+      padding: 10px 15px;
+    }
+  }
+}
+

@@ -1,10 +1,12 @@
 /**
  * General Stuff
  */
+
 html, body {
-    height: 100%;
+  height: 100%;
+  width: 100%;
 }
- 
+
 body {
   min-width: 360px;
   /*
@@ -16,15 +18,70 @@ body {
   */
   background-color: #200001;
   overflow-x: hidden;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
-.section-gradient-break 
+
+
+hr {
+  border-color: #200001;
+  border-width: 3px;
+  max-width: 50px;
+}
+hr.light {
+  border-color: white;
+}
+a {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  color: #200001;
+}
+a:hover,
+a:focus {
+  color: #000000;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.bg-primary {
+  background-color: #200001;
+}
+.bg-dark {
+  background-color: #222222;
+  color: white;
+}
+.text-faded {
+  color: rgba(255, 255, 255, 0.7);
+}
+section {
+  padding: 20px 0;
+}
+aside {
+  padding: 50px 0;
+}
+.no-padding {
+  padding: 0;
+}
+
+/**
+ * Gradient divider stuff
+ */
+.section-gradient-break
 {
   position: relative;
   background-color: #200001;
-  
+
 }
-
-
 .section-gradient-break-inner {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+32,200001+62,200001+100&0+0,1+42,1+57,1+100 */
   background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.76) 32%, rgba(11,0,0,1) 42%, rgba(27,0,1,1) 57%, rgba(32,0,1,1) 62%, rgba(32,0,1,1) 100%); /* FF3.6-15 */
@@ -72,7 +129,14 @@ body {
 
 
 section {
-  min-height: 1000px; 
+  min-height: 1000px;
+}
+
+span.navbar-brand {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  cursor: pointer;
 }
 
 /**
@@ -99,7 +163,7 @@ karaoke-map,
   height: 450px;
   background-color: #200001;
 }
-.karaoke-map-container 
+.karaoke-map-container
 {
   width: 100%;
   margin: auto;
@@ -112,12 +176,12 @@ karaoke-map,
   .karaoke-map
   {
     height: 225px;
-  } 
-  .karaoke-map-container 
+  }
+  .karaoke-map-container
   {
     height: 235px;
   }
-  karaoke-map .karaoke-map-container map 
+  karaoke-map .karaoke-map-container map
   {
     display: block;
     margin-top: 4px;
@@ -131,12 +195,12 @@ karaoke-map,
   .karaoke-map
   {
     height: 325px;
-  } 
-  .karaoke-map-container 
+  }
+  .karaoke-map-container
   {
     height: 335px;
   }
-  karaoke-map .karaoke-map-container map 
+  karaoke-map .karaoke-map-container map
   {
     display: block;
     margin-top: 4px;
@@ -174,7 +238,6 @@ karaoke-map,
 /**
  * Sticky Map
  */
- 
 @media (max-width: 768px)
 {
   karaoke-map.sticky .karaoke-map-container
@@ -190,13 +253,13 @@ karaoke-map,
 .map-reset
 {
   /* pulled from google ui control */
-  -webkit-user-select: none;  
-  -moz-user-select: none;     
-  -ms-user-select: none;      
-  user-select: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   box-shadow: 0px 0px 2px #CCC;
-  border-radius: 2px; 
-  cursor: pointer; 
+  border-radius: 2px;
+  cursor: pointer;
   text-align: center;
   font-size:18px;
   margin-right: 10px;
@@ -214,11 +277,11 @@ karaoke-map,
 /**
  * Info Windows
  */
-map-info-window 
+map-info-window
 {
   pointer-events: none;
 }
-.map-info-window 
+.map-info-window
 {
   color: black;
 }
@@ -236,7 +299,7 @@ map-info-window
 }
 .map-info-window .venue-logo-image-none-container
 {
-  
+
 }
 .map-info-window .venue-logo-image-none,
 .map-info-window .venue-logo-image
@@ -267,11 +330,11 @@ map-info-window
 /**
  * Events list view
  */
-.events-list-view 
+.events-list-view
 {
   margin-top: 18px;
 }
-.events-list-item 
+.events-list-item
 {
   min-height: 70px;
   width: 100%;
@@ -287,7 +350,7 @@ map-info-window
   font-size: 1em;
   font-weight: 500;
 }
-.events-list-item:hover 
+.events-list-item:hover
 {
   -webkit-box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
   -moz-box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
@@ -344,7 +407,7 @@ section#share-videos
 }
 
 @media only screen and (min-width: 769px) {
-  
+
 
   .day-selectors div:before,
   .day-selectors-mobile div:before
@@ -377,14 +440,14 @@ section#share-videos
 @media only screen and (min-width: 621px) {
   .day-selectors, .day-selectors div { display: flex;}
   .day-selectors-mobile { display: none;}
-  
+
 }
 @media only screen and (max-width: 620px) {
   .day-selectors { display: none;}
   .day-selectors-mobile, .day-selectors-mobile div { display: flex;}
 }
 @media only screen and (max-width: 768px) {
-  
+
   .day-selectors-container
   {
       background-color: rgb(255, 255, 255);
@@ -399,15 +462,15 @@ section#share-videos
   {
     padding: 6px;
   }
-  
+
   .day-selectors-container .day-selectors div.selected,
   .day-selectors-container .day-selectors-mobile div.selected
   {
     background-color: rgb(32, 0, 1);
     color: rgb(255, 255, 255);
   }
-  
-  .bottom-selector 
+
+  .bottom-selector
   {
     display: none;
   }

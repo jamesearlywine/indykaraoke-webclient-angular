@@ -95,7 +95,7 @@ export class WindowService {
                 duration: scrollDuration
             });
         } else {
-            const options = _.assign({}, this.settings.scrollDefaults, param);
+            const options = _.merge({}, this.settings.scrollDefaults, param);
             this.scrollToService.scrollTo(options);
         }
     }

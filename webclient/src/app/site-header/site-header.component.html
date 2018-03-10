@@ -1,44 +1,31 @@
-<!-- begin site nav header (imported from a template that uses global js, should be refactored) -->
-<nav id="mainNav" 
-    class="navbar navbar-default navbar-fixed-top noselect"
-    [ngClass]="{
-        'affix' : !affixedHeader,
-        'affix-top': affixedHeader    
-    }"    
->
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <span class="navbar-brand noselect" 
-                    (click)="scrollToWhereToSing()" 
-                    id="logo-text" 
-                    unselectable="true">IndyKaraoke.com</span>
-            <button type="button" 
-                    class="navbar-toggle collapsed" 
-                    (click)="toggleMenu();">
-                <span class="sr-only">Toggle navigation</span> Menu
-                <i class="fa fa-bars"></i>
-            </button>
-        </div>
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top noselect" [ngClass]="{
+            'sticky': sticky
+        }">
+        <div class="container-fluid header-content-wrapper">
+            <div class="navbar-header">
+                <span class="navbar-brand noselect" (click)="goToWhereToSing()" id="logo-text" unselectable="true">IndyKaraoke.com</span>
+                <button type="button" class="navmenu collapsed" (click)="toggleMenu();">
+                    <span class="sr-only">Toggle navigation</span> Menu
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="" (click)="goToWhereToSing();">Where to sing</a>
-                </li>
-                <!--
-                <li>
-                <a href="../mocks/kjs.html">Karaoke DJs</a>
-                </li>
-                -->
-                <li>
-                    <a href="" (click)="goToShareYourVideos();">Share your videos</a>
-                </li>
-            </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="navbar-menu" class="navbar-collapse navbar-toggleable-xs" *ngIf="showMenu" [@collapse]>
+                <ul class="navbar-nav nav navbar-right" [@collapse]>
+                    <li class="nav-item">
+                        <a href="" (click)="goToWhereToSing();">Where to sing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" (click)="goToShareYourVideos();">Share your videos</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-<!-- end site nav header -->
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- end site nav header -->
+
+</div>
