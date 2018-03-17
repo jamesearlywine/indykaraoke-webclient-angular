@@ -1,34 +1,54 @@
+// angular stuff
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy } from '@angular/common';
 
+// routes
 import { appRoutes } from './app.routes';
 
+// routables
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { SiteHeaderComponent } from './site-header/site-header.component';
-import { IndianapolisKaraokePageHeaderComponent } from './indianapolis-karaoke-page-header/indianapolis-karaoke-page-header.component';
-import { WindowService } from './common/services/window.service';
+import { ShareComponent } from './share/share.component';
 
+// embeddables
+import { SiteHeaderComponent } from './common/components/site-header/site-header.component';
+import { KaraokePageHeaderComponent } from './common/components/karaoke-page-header/karaoke-page-header.component';
+import { KaraokeMapComponent } from './common/components/karaoke-map/karaoke-map.component';
+
+// services
+import { WindowService } from './common/services/window.service';
+import { LocationService } from './common/services/location.service';
+import { VenueDataService } from './common/services/venue-data.service';
+import { EventDataService } from './common/services/event-data.service';
+
+// vendor code
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
+    // global
     AppComponent,
+    // routables
     HomeComponent,
+    ShareComponent,
+    // embeddables
     SiteHeaderComponent,
-    IndianapolisKaraokePageHeaderComponent
+    KaraokePageHeaderComponent,
+    KaraokeMapComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       {
-        enableTracing: true, // <-- debugging purposes only
+        // enableTracing: true, // <-- debugging purposes only
         useHash: true
       }
     ),
@@ -36,8 +56,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot()
   ],
   providers: [
-    WindowService
+    WindowService,
+    LocationService,
+    VenueDataService,
+    EventDataService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    private venueDataService: VenueDataService,
+    private eventDataService: EventDataService
+  ) {
+    // load data as soon as possible
+    this.venueDataService.getVenues();
+    this.eventDataService.getEvents();
+  }
+
+}

@@ -1,0 +1,25 @@
+<div class="container-fluid" [ngClass]="{
+			'has-scrolled': hasScrolled
+}">
+  <nav class="navbar navbar-expand-md navbar-default fixed-top noselect"
+        [ngClass]="{
+					'slow-background-color-transition': slowBackgroundColorTransition
+	}">
+    <div class="row m-0 justify-content-between align-items-center navbar-header">
+      <div class="pl-3 navbar-brand" (click)="goToHome()">IndyKaraoke.com</div>
+      <button type="button" class="navbar-toggler navbar-toggler-right" (click)="toggleMenu()">
+        <i class="icon-menu"></i>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse show" [@showMenu]="showMenu">
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <div class="nav-link" (click)="goToWhere()">Where to Sing</div>
+        </li>
+        <li>
+          <div class="nav-link" (click)="goToShare()">Share Your Videos</div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

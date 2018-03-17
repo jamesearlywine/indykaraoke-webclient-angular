@@ -4,5 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  city: 'indianapolis',
+  webserviceEndpoints: {
+    venues: 'http://webservice.indykaraoke.com/api/v1/venues',
+    weeklyEvents: 'http://webservice.indykaraoke.com/api/v1/weeklyEvents'
+  }
 };
