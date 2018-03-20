@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 import { environment } from '../../../environments/environment';
-import { CalendarEvent } from '../lib/calendar-event';
 import { WeeklyEvent } from '../lib/weekly-event';
-import 'rxjs/add/operator/zip';
 
 @Injectable()
 export class EventDataService {
@@ -16,14 +14,14 @@ export class EventDataService {
   _events: BehaviorSubject<WeeklyEvent[]> = new BehaviorSubject([]);
   _fetchedEvents = false;
 
-  get events() {
+  get events(): BehaviorSubject<WeeklyEvent[]> {
     if (!this._fetchedEvents) {
       this._fetchedEvents = true;
       this.getEvents();
     }
     return this._events;
   }
-  getEvents() {
+  getEvents(): BehaviorSubject<WeeklyEvent[]> {
     this.http.get(environment.webserviceEndpoints.weeklyEvents)
       .subscribe(events => {
         this._events.next(<any[]>_.values(events));
@@ -31,7 +29,7 @@ export class EventDataService {
     ;
     return this._events;
   }
-  byId(id: string | number) {
+  byId(id: string | number): BehaviorSubject<WeeklyEvent> {
     id = id as number;
     const result = new BehaviorSubject(null);
     this.events.subscribe(events => {
@@ -39,7 +37,7 @@ export class EventDataService {
     });
     return result;
   }
-  byVenueId(id: string | number) {
+  byVenueId(id: string | number): BehaviorSubject<WeeklyEvent[]> {
     id = id as number;
     const result = new BehaviorSubject(null);
     this.events.subscribe(events => {
@@ -47,7 +45,7 @@ export class EventDataService {
     });
     return result;
   }
-  byWeekDay(weekday: string) {
+  byWeekDay(weekday: string): BehaviorSubject<WeeklyEvent[]> {
     const result = new BehaviorSubject(null);
     this.events.subscribe(events => {
       result.next(events.filter(event => event.day_of_week === weekday));

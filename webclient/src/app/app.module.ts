@@ -67,12 +67,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppModule {
   constructor(
-    private venueDataService: VenueDataService,
-    private eventDataService: EventDataService,
     private dataService: DataService
   ) {
-    // load data as soon as possible
-    this.venueDataService.venues.subscribe();
-    this.eventDataService.events.subscribe();
+    // load directory data as soon as possible
+    this.dataService.initialLoad();
   }
 }

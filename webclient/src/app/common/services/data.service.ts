@@ -8,7 +8,7 @@ import { Observable } from "rxjs/Observable";
 import { zip } from 'rxjs/observable/zip';
 
 /**
- * @brief Mediating Service for handling cross-service circular dependencies
+ * @brief Mediating service for handling cross-service circular dependencies (re: fly-weights/cross-references/etc)
  */
 
 @Injectable()
@@ -28,8 +28,12 @@ export class DataService {
       }
     });
   }
+  initialLoad() {
+    this.eventDataService.events.subscribe();
+    this.venueDataService.venues.subscribe();
+  }
   decorateEventsWithVenues(events: CalendarEvent[]): void {
-    console.log('decorating events with venues');
+    // console.log('decorating events with venues');
     const venuesById = _.keyBy(this.venueDataService.venues.value, 'id');
     _.map(events, (event) => {
       event.venue = venuesById[event.venue_id];
@@ -37,7 +41,7 @@ export class DataService {
 
   }
   decorateVenuesWithEvents(venues: Venue[]) {
-    console.log('decorating venues with events');
+    // console.log('decorating venues with events');
     venues.forEach(venue => {
       venue.events = this.eventDataService.events.value.filter(event => event.venue_id === venue.id);
     });
