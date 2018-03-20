@@ -24,6 +24,7 @@ import { WindowService } from './common/services/window.service';
 import { LocationService } from './common/services/location.service';
 import { VenueDataService } from './common/services/venue-data.service';
 import { EventDataService } from './common/services/event-data.service';
+import { DataService } from './common/services/data.service';
 
 // vendor code
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
@@ -59,18 +60,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     WindowService,
     LocationService,
     VenueDataService,
-    EventDataService
+    EventDataService,
+    DataService,
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(
     private venueDataService: VenueDataService,
-    private eventDataService: EventDataService
+    private eventDataService: EventDataService,
+    private dataService: DataService
   ) {
     // load data as soon as possible
-    this.venueDataService.getVenues();
-    this.eventDataService.getEvents();
+    this.venueDataService.venues.subscribe();
+    this.eventDataService.events.subscribe();
   }
-
 }

@@ -1,6 +1,7 @@
+import { CalendarEvent } from './calendar-event';
 import { Venue } from './venue';
 
-export interface WeeklyEvent {
+export interface WeeklyEvent extends CalendarEvent {
   id: number;
   karaoke_host_id: number;
   venue_id: number;

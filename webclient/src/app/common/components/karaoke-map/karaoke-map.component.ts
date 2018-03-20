@@ -1,10 +1,12 @@
-import { Component, ElementRef, Input, AfterViewInit, OnInit, OnChanges, SimpleChange } from '@angular/core';
+import { Component, ElementRef, Input, AfterViewInit, OnInit } from '@angular/core';
 
 import * as _ from 'lodash';
 import {} from 'googlemaps';
 
 import { LocationService } from '../../services/location.service';
 import { WindowService } from '../../services/window.service';
+import { EventDataService } from '../../services/event-data.service';
+
 import { WeeklyEvent } from '../../lib/weekly-event';
 
 @Component({
@@ -12,13 +14,14 @@ import { WeeklyEvent } from '../../lib/weekly-event';
   templateUrl: './karaoke-map.component.html',
   styleUrls: ['./karaoke-map.component.scss']
 })
-export class KaraokeMapComponent implements OnInit, AfterViewInit, OnChanges {
+export class KaraokeMapComponent implements OnInit, AfterViewInit {
   @Input() events: Array<any>; // @todo write Venue class
 
   constructor(
     private hostElement: ElementRef,
     private locationService: LocationService,
-    private windowService: WindowService
+    private windowService: WindowService,
+    private eventDataService: EventDataService
   ) {
     this.windowService.nativeWindow.appDebug.karaokeMapCtrl = this;
   }
@@ -29,10 +32,8 @@ export class KaraokeMapComponent implements OnInit, AfterViewInit, OnChanges {
     gotoEventZoomLevel: 14
   };
   mapProperties = null;
-  map = null;
   mapElement = null;
-
-  changeLog: string[] = [];
+  map = null;
 
   ngOnInit() {
     this.mapProperties = _.merge({}, this.mapDefaults);
@@ -42,24 +43,6 @@ export class KaraokeMapComponent implements OnInit, AfterViewInit, OnChanges {
     this.mapElement = this.hostElement.nativeElement.querySelector('#google-map');
     this.initMap();
   }
-
-  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-    console.log('changes: ', changes);
-    let log: string[] = [];
-    for (const propName of Object.keys(changes)) {
-      const changedProp = changes[propName];
-      if (changedProp === undefined) {console.log('propName: ', propName , ' undfined'); continue;}
-      const to = JSON.stringify(changedProp.currentValue);
-      if (changedProp.isFirstChange()) {
-        log.push(`Initial value of ${propName} set to ${to}`);
-      } else {
-        const from = JSON.stringify(changedProp.previousValue);
-        log.push(`${propName} changed from ${from} to ${to}`);
-      }
-    }
-    this.changeLog.push(log.join(', '));
-  }
-
 
   initMap() {
     this.map = new google.maps.Map(

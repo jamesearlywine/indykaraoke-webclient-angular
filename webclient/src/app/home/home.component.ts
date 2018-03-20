@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WindowService } from '../common/services/window.service';
 import { EventDataService } from '../common/services/event-data.service';
+import { VenueDataService } from '../common/services/venue-data.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -24,7 +25,8 @@ export class HomeComponent implements AfterViewInit {
   constructor(
     private router: Router,
     private windowService: WindowService,
-    private eventDataService: EventDataService
+    private eventDataService: EventDataService,
+    private venueDataService: VenueDataService
   ) {
     this.windowService.nativeWindow.appDebug.HomeCtrl = this;
   }

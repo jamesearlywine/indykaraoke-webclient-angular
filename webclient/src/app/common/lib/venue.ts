@@ -1,5 +1,6 @@
 export interface Venue {
   id: number;
+  events?: Array<any>; // can't have circular import Venue/CalandarEvent
   name: string;
   admin_notes: string;
   background_image: string;
