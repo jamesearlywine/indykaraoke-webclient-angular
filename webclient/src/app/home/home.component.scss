@@ -1,0 +1,34 @@
+:host {
+  /* scroll anchors */
+  .scroll-anchor {
+    position: static;
+    display: block;
+    height: 0px;
+    width: 0px;
+  }
+  #where-to-sing {
+    position: relative;
+    top: -100px;
+  }
+
+  /* map stuff */
+  .sticky-map-container {
+    position: sticky;
+    border-top: solid 1px rgb(32, 0, 1);
+    top: 46px;
+    z-index: 1000;
+
+    day-selector {
+      border-bottom: solid 2px rgb(32, 0, 1);
+    }
+    karaoke-map {
+      height: 300px;
+    }
+  }
+  @media (min-width: 768px) {
+    .sticky-map-container {
+      top: 48px;
+    }
+  }
+
+}

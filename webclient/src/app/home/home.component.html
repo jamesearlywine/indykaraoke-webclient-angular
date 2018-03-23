@@ -1,9 +1,31 @@
 <karaoke-page-header></karaoke-page-header>
-<div style="text-align:center">
-    <karaoke-map [events]="eventDataService.events"></karaoke-map>
-    <!--
-    <h1 *ngFor="let event of eventDataService.events">
-        Venue: {{event.venue.name}}
-    </h1>
-  -->
+<div class="fluid-container" style="text-align:center">
+  <div class="row map-header">
+    <div class="col-12">
+      <h2>- Map -</h2>
+    </div>
+  </div>
+  <div class="scroll-anchor" id="where-to-sing"></div>
+  <div class="row sticky-map-container">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <day-selector></day-selector>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <karaoke-map [events]="weeklyEvents"></karaoke-map>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row"
+        *ngFor="let venue of venueDataService.venues | async"
+  >
+    <div class="col-12">
+      {{venue.name}}
+    </div>
+  </div>
 </div>

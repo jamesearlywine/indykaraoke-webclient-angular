@@ -1,10 +1,11 @@
 import { Injectable, } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 import { CalendarEvent } from '../lib/calendar-event';
 import { Venue } from '../lib/venue';
 import { VenueDataService } from './venue-data.service';
 import { EventDataService } from './event-data.service';
-import { Observable } from "rxjs/Observable";
+import { MarkerService } from './marker.service';
 import { zip } from 'rxjs/observable/zip';
 
 /**
@@ -25,9 +26,13 @@ export class DataService {
       if (events.length > 0 && venues.length > 0) {
         this.decorateEventsWithVenues(events);
         this.decorateVenuesWithEvents(venues);
+        MarkerService.decorateVenuesWithMarkers(venues);
+        this.dataCompilationComplete.next(true);
       }
     });
   }
+  dataCompilationComplete: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   initialLoad() {
     this.eventDataService.events.subscribe();
     this.venueDataService.venues.subscribe();

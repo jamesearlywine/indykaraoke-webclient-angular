@@ -1,0 +1,49 @@
+/*
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+*/
+
+:host {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 8px 0px;
+    background-color: white;
+    color: rgb(32, 0, 1);
+
+  .day-selectors-container {
+    width: 100%;
+  }
+  .day-selectors {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .day-selector
+  {
+    position: relative;
+    display: inline-flex;
+    padding: 4px 6px;
+    text-decoration: none;
+    font-weight: 550;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .day-selector.selected {
+    background-color: rgb(32, 0, 1);
+    color: white;
+  }
+
+  /* abbreviations */
+  .abbreviated { display: inline; }
+  .not-abbreviated { display: none; }
+
+  @media (min-width: 700px) {
+    .abbreviated { display: none; }
+    .not-abbreviated { display: inline; }
+  }
+
+
+
+}

@@ -18,13 +18,16 @@ import { ShareComponent } from './share/share.component';
 import { SiteHeaderComponent } from './common/components/site-header/site-header.component';
 import { KaraokePageHeaderComponent } from './common/components/karaoke-page-header/karaoke-page-header.component';
 import { KaraokeMapComponent } from './common/components/karaoke-map/karaoke-map.component';
+import { DaySelectorComponent } from './common/components/day-selector/day-selector.component';
 
 // services
 import { WindowService } from './common/services/window.service';
 import { LocationService } from './common/services/location.service';
 import { VenueDataService } from './common/services/venue-data.service';
 import { EventDataService } from './common/services/event-data.service';
+import { MarkerService } from './common/services/marker.service';
 import { DataService } from './common/services/data.service';
+import { DayOfWeekService } from './common/services/day-of-week.service';
 
 // vendor code
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
@@ -40,7 +43,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     // embeddables
     SiteHeaderComponent,
     KaraokePageHeaderComponent,
-    KaraokeMapComponent
+    KaraokeMapComponent,
+    DaySelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LocationService,
     VenueDataService,
     EventDataService,
+    MarkerService,
     DataService,
+    DayOfWeekService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,9 @@
+import { Marker } from './marker';
+
 export interface Venue {
   id: number;
   events?: Array<any>; // can't have circular import Venue/CalandarEvent
+  marker?: Marker;
   name: string;
   admin_notes: string;
   background_image: string;

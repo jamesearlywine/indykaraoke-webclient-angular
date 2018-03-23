@@ -112,9 +112,8 @@ export class WindowService {
   }
   scrollToWhereToSing() {
     this.scrollTo({
-      target: 'karaoke-map',
+      target: '#where-to-sing',
       duration: this.settings.scrollDefaults.duration,
-      offset: -60
    });
   }
 }
