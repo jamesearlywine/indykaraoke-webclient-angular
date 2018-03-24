@@ -1,12 +1,10 @@
 <div class="day-selectors-container">
-  <div class="day-selectors"
-        *ngIf="(dayOfWeekService.selectedDay | async); let selectedDay"
-  >
+  <div class="day-selectors">
     <div class="day-selector"
           [ngClass]="{
             'selected' : selectedDay === 'sunday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('sunday')"
+          (click)="selectDay('sunday')"
     >
       <span class="abbreviated">Sun</span>
       <span class="not-abbreviated">Sunday</span>
@@ -15,7 +13,7 @@
           [ngClass]="{
             'selected' : selectedDay === 'monday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('monday')"
+          (click)="selectDay('monday')"
     >
       <span class="abbreviated">Mon</span>
       <span class="not-abbreviated">Monday</span>
@@ -24,7 +22,7 @@
           [ngClass]="{
             'selected' : selectedDay === 'tuesday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('tuesday')"
+          (click)="selectDay('tuesday')"
     >
       <span class="abbreviated">Tue</span>
       <span class="not-abbreviated">Tuesday</span>
@@ -33,7 +31,7 @@
           [ngClass]="{
             'selected' : selectedDay === 'wednesday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('wednesday')"
+          (click)="selectDay('wednesday')"
     >
       <span class="abbreviated">Wed</span>
       <span class="not-abbreviated">Wednesday</span>
@@ -42,7 +40,7 @@
           [ngClass]="{
             'selected' : selectedDay === 'thursday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('thursday')"
+          (click)="selectDay('thursday')"
     >
       <span class="abbreviated">Thu</span>
       <span class="not-abbreviated">Thursday</span>
@@ -51,7 +49,7 @@
           [ngClass]="{
             'selected' : selectedDay === 'friday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('friday')"
+          (click)="selectDay('friday')"
     >
       <span class="abbreviated">Fri</span>
       <span class="not-abbreviated">Friday</span>
@@ -60,7 +58,7 @@
           [ngClass]="{
             'selected' : selectedDay === 'saturday'
           }"
-          (click)="dayOfWeekService.setSelectedDay('saturday')"
+          (click)="selectDay('saturday')"
     >
       <span class="abbreviated">Sat</span>
       <span class="not-abbreviated">Saturday</span>
