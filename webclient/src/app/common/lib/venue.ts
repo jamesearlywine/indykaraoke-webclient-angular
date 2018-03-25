@@ -2,6 +2,7 @@ import { Marker } from './marker';
 
 export interface Venue {
   id: number;
+  sortId?: number| string;
   events?: Array<any>; // can't have circular import Venue/CalandarEvent
   marker?: Marker;
   name: string;

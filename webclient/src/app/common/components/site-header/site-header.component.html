@@ -1,10 +1,9 @@
-<div class="container-fluid navbar-container" [ngClass]="{
-			'has-scrolled': hasScrolled
-}">
+<div class="container-fluid navbar-container"
+  [class.has-scrolled]="hasScrolled"
+>
   <nav class="navbar navbar-expand-md navbar-default fixed-top noselect"
-        [ngClass]="{
-					'slow-background-color-transition': slowBackgroundColorTransition
-	}">
+    [class.slow-background-color-transition]="slowBackgroundColorTransition"
+  >
     <div class="row m-0 justify-content-between align-items-center navbar-header">
       <div class="pl-3 navbar-brand" (click)="goToHome()">IndyKaraoke.com</div>
       <button type="button" class="navbar-toggler navbar-toggler-right" (click)="toggleMenu()">

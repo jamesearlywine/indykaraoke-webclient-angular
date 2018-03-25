@@ -97,55 +97,6 @@ aside {
   background-color: transparent;
 }
 
-/**
- * Functional CSS
- */
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
-}
-.clickable
-{
-  cursor: pointer;
-}
-
-
-/**
- * Nav Header Stuff
- */
-
-@media (max-width: 479px) { .navbar-brand { min-width: 73%; } }
-@media (min-width: 480px) and (max-width: 767px) { .navbar-brand { min-width: 80%; } }
-@media (min-width: 768px) { .navbar-brand { min-width: 50%; } }
-
-
-section {
-  min-height: 1000px;
-}
-
-span.navbar-brand {
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  transition: all 0.35s;
-  cursor: pointer;
-}
-
-/**
- * Home section
- */
-#homeHeading {
-  font-family: 'Trebuchet MS', Helvetica, sans-serif;
-  font-family: "Lucida Console", Monaco, monospace;
-  font-family: "Courier New", Courier, monospace;
-}
-
-
-
 
 
 
@@ -322,56 +273,4 @@ map-info-window
   /* min-width: 200px !important; */
 }
 
-
-/**
- * Events list view
- */
-.events-list-view
-{
-  margin-top: 18px;
-}
-.events-list-item
-{
-  min-height: 70px;
-  width: 100%;
-  background-color: #eee;
-  border-radius: 12px;
-  box-shadow: 2px 2px 1px #333;
-  padding: 1px 14px;
-  margin-top: 4px;
-  margin-bottom: 7px;
-  cursor: pointer;
-  color: #222;
-  text-align: left;
-  font-size: 1em;
-  font-weight: 500;
-}
-.events-list-item:hover
-{
-  -webkit-box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
-  -moz-box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
-  box-shadow: 0px 0px 3px 4px rgba(0,0,255,.35);
-}
-
-.events-list-item.selected
-{
-  background-color: #fafafa;
-}
-.events-list-item .title-row
-{
-  color: #200001;
-  font-weight: 600;
-  font-size: 1.2em;
-}
-
-
-
-
-/**
- * Share Videos section
- */
-section#share-videos
-{
-  padding-top: 100px;
-}
 

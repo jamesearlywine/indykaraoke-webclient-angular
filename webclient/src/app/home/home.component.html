@@ -1,4 +1,4 @@
-<karaoke-page-header></karaoke-page-header>
+<home-page-header></home-page-header>
 <div class="fluid-container" style="text-align:center">
   <div class="row map-header">
     <div class="col-12">
@@ -10,24 +10,22 @@
     <div class="col-12">
       <div class="row">
         <div class="col-12">
-          <week-day-selector
-            [(selectedDay)]="selectedDay"
-          ></week-day-selector>
+          <week-day-selector [(selectedDay)]="selectedDay"></week-day-selector>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <karaoke-map [events]="weeklyEvents"></karaoke-map>
+          <events-map
+            [events]="weeklyEvents"
+            [(selectedEvent)]="selectedEvent"
+          ></events-map>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row"
-        *ngFor="let venue of venueDataService.venues | async"
-  >
-    <div class="col-12">
-      {{venue.name}}
-    </div>
-  </div>
+  <events-list
+    [events]="weeklyEvents"
+    [(selectedEvent)]="selectedEvent"
+  ></events-list>
 </div>

@@ -1,64 +1,50 @@
 <div class="day-selectors-container">
   <div class="day-selectors">
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'sunday'
-          }"
-          (click)="selectDay('sunday')"
+      [class.selected]="selectedDay === 'sunday'"
+      (click)="selectDay('sunday')"
     >
       <span class="abbreviated">Sun</span>
       <span class="not-abbreviated">Sunday</span>
     </div>
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'monday'
-          }"
-          (click)="selectDay('monday')"
+      [class.selected]="selectedDay === 'monday'"
+      (click)="selectDay('monday')"
     >
       <span class="abbreviated">Mon</span>
       <span class="not-abbreviated">Monday</span>
     </div>
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'tuesday'
-          }"
-          (click)="selectDay('tuesday')"
+      [class.selected]="selectedDay === 'tuesday'"
+      (click)="selectDay('tuesday')"
     >
       <span class="abbreviated">Tue</span>
       <span class="not-abbreviated">Tuesday</span>
     </div>
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'wednesday'
-          }"
-          (click)="selectDay('wednesday')"
+       [class.selected]="selectedDay === 'wednesday'"
+       (click)="selectDay('wednesday')"
     >
       <span class="abbreviated">Wed</span>
       <span class="not-abbreviated">Wednesday</span>
     </div>
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'thursday'
-          }"
-          (click)="selectDay('thursday')"
+      [class.selected]="selectedDay === 'thursday'"
+      (click)="selectDay('thursday')"
     >
       <span class="abbreviated">Thu</span>
       <span class="not-abbreviated">Thursday</span>
     </div>
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'friday'
-          }"
-          (click)="selectDay('friday')"
+      [class.selected]="selectedDay === 'friday'"
+      (click)="selectDay('friday')"
     >
       <span class="abbreviated">Fri</span>
       <span class="not-abbreviated">Friday</span>
     </div>
     <div class="day-selector"
-          [ngClass]="{
-            'selected' : selectedDay === 'saturday'
-          }"
-          (click)="selectDay('saturday')"
+      [class.selected]="selectedDay === 'saturday'"
+      (click)="selectDay('saturday')"
     >
       <span class="abbreviated">Sat</span>
       <span class="not-abbreviated">Saturday</span>

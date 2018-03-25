@@ -15,10 +15,13 @@ import { HomeComponent } from './home/home.component';
 import { ShareComponent } from './share/share.component';
 
 // embeddables
+import { HomePageHeaderComponent } from './home/home-page-header/home-page-header.component';
 import { SiteHeaderComponent } from './common/components/site-header/site-header.component';
-import { KaraokePageHeaderComponent } from './common/components/karaoke-page-header/karaoke-page-header.component';
-import { KaraokeMapComponent } from './common/components/karaoke-map/karaoke-map.component';
 import { WeekDaySelectorComponent } from './common/components/week-day-selector/week-day-selector.component';
+import { EventsMapComponent } from './common/components/events-map/events-map.component';
+import { EventsListComponent } from './common/components/events-list/events-list.component';
+import { BasicListingComponent } from './common/components/events-list/basic-listing/basic-listing.component';
+import { EventInfoWindowComponent } from './common/components/event-info-window/event-info-window.component';
 
 // services
 import { WindowService } from './common/services/window.service';
@@ -26,6 +29,7 @@ import { LocationService } from './common/services/location.service';
 import { VenueDataService } from './common/services/venue-data.service';
 import { EventDataService } from './common/services/event-data.service';
 import { MarkerService } from './common/services/marker.service';
+import { InfoWindowService } from './common/services/info-window.service';
 import { DataService } from './common/services/data.service';
 import { DayOfWeekService } from './common/services/day-of-week.service';
 
@@ -42,9 +46,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ShareComponent,
     // embeddables
     SiteHeaderComponent,
-    KaraokePageHeaderComponent,
-    KaraokeMapComponent,
-    WeekDaySelectorComponent
+    HomePageHeaderComponent,
+    WeekDaySelectorComponent,
+    EventsMapComponent,
+    EventInfoWindowComponent,
+    EventsListComponent,
+    BasicListingComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +73,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     VenueDataService,
     EventDataService,
     MarkerService,
+    InfoWindowService,
     DataService,
     DayOfWeekService
   ],

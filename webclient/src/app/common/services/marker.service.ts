@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
 import { Venue } from '../lib/venue';
 import { Marker } from '../lib/marker';
 
@@ -7,23 +6,10 @@ import { Marker } from '../lib/marker';
 export class MarkerService {
   constructor() {}
 
-  // service methods
+  // markers are eagerly built
   static decorateVenuesWithMarkers(venues: Venue[]): void {
     venues.forEach(venue => {
-      venue.marker = MarkerService.markerFromVenue(venue);
+      venue.marker = Marker.fromVenue(venue);
     });
   }
-
-  // factory methods
-  static markerFromVenue(venue: Venue) {
-    const options = <any>{};
-    options.location = venue;
-
-    return new Marker(options);
-  }
-
-
-
-
-
 }

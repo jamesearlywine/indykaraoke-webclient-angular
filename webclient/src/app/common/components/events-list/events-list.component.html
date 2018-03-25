@@ -1,0 +1,8 @@
+<div class="events-list-container">
+  <div *ngFor="let event of events | async">
+    <basic-listing
+      [event]="event"
+      (selectedChange)="onEventSelectedChange($event)"
+    ></basic-listing>
+  </div>
+</div>

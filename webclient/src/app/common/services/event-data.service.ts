@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 import { environment } from '../../../environments/environment';
 import { WeeklyEvent } from '../lib/weekly-event';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EventDataService {
@@ -24,7 +25,9 @@ export class EventDataService {
   getEvents(): BehaviorSubject<WeeklyEvent[]> {
     this.http.get(environment.webserviceEndpoints.weeklyEvents)
       .subscribe(events => {
-        this._events.next(<any[]>_.values(events));
+        this._events.next(<any[]>
+          _.values(events).map( event => new WeeklyEvent(event) )
+        );
       })
     ;
     return this._events;

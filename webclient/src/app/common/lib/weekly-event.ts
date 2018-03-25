@@ -1,7 +1,7 @@
 import { CalendarEvent } from './calendar-event';
 import { Venue } from './venue';
 
-export interface WeeklyEvent extends CalendarEvent {
+export class WeeklyEvent extends CalendarEvent {
   id: number;
   karaoke_host_id: number;
   venue_id: number;
@@ -13,4 +13,6 @@ export interface WeeklyEvent extends CalendarEvent {
   karaoke_host_name: string;
   start_time: string;
   end_time: string;
+
+  constructor(properties) { super(properties); }
 }

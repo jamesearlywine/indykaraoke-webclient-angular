@@ -1,0 +1,17 @@
+<div class="basic-listing-container"
+  (click)="toggleSelected()"
+  [class.selected]="event.isSelected"
+>
+  <div class="title-row">
+    <span class="venue-name" [innerHTML]="event.venue.name"></span>
+  </div>
+  <div class="address-row1">
+    <span class="venue-street1" [innerHTML]="event.venue.street1"></span>
+  </div>
+  <div class="city-state-zip-row">
+    <span class="venue-city" [innerHTML]="event.venue.city"></span>
+    <span *ngIf="event.venue.state">, </span>
+    <span *ngIf="event.venue.state" [innerHTML]="event.venue.state"></span>
+    <span *ngIf="event.venue.zip" [innerHTML]="event.venue.zip"></span>
+  </div>
+</div>

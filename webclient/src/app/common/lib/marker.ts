@@ -4,7 +4,11 @@ import * as _ from 'lodash';
 import { InfoWindow } from './info-window';
 import { Map } from './map';
 import { Venue } from './venue';
+import { CalendarEvent } from './calendar-event';
 import { MarkerOptions } from './marker-options';
+import { EventEmitter } from '@angular/core';
+import { LocationService } from '../services/location.service';
+
 
 export class Marker extends google.maps.Marker {
 
@@ -14,71 +18,69 @@ export class Marker extends google.maps.Marker {
     titleKey: 'name',
     styling: environment.markers.styling,
     labelStyling: environment.markers.labelStyling,
+    location: LocationService.cities[environment.city]
   };
 
-  infoWindow: InfoWindow;
-  map: Map;
-  venue: Venue;
+  venue?: Venue;
+  clicked: EventEmitter<Marker>;
 
-  // should be typed to MarkerOptions class
-  constructor(options: MarkerOptions) {
+  constructor(markerOptions: MarkerOptions) {
+    super({
+      icon: markerOptions.icon,
+      position: markerOptions.position,
+      map: markerOptions.map,
+      label: markerOptions.label,
+      title: markerOptions.title
+    });
+    this.venue = markerOptions.venue;
+    this.clicked = new EventEmitter();
+    this.addListener('click', (event) => this.clicked.emit(this));
+  }
 
-    const markerSettings = <any> _.merge({}, Marker.defaults, options);
-    markerSettings.pinSymbol = <any> _.merge({}, Marker.defaults.styling);
+  /**
+   * @brief Factory Methods
+   */
+  static fromVenue(venue: Venue, markerOptions: MarkerOptions = {}) {
+    const markerSettings = <any>_.merge({}, Marker.defaults, markerOptions);
 
     // marker position (lat, lng)
-    if ( markerSettings.location !== undefined
-      && markerSettings.location.latitude !== undefined
-      && markerSettings.location.longitude !== undefined
-    ) {
-      markerSettings.position = {
-        lat: parseFloat(markerSettings.location.latitude),
-        lng: parseFloat(markerSettings.location.longitude)
-      };
-    }
-
-    // marker label
-    markerSettings.label = _.merge(
-      {
-        text: markerSettings.location[markerSettings.labelKey].toString(),
-      },
-      markerSettings.labelStyling
-    );
+    markerSettings.position = (
+      venue.latitude !== undefined &&
+      venue.longitude !== undefined
+    )
+      ? {
+        lat: parseFloat(venue.latitude),
+        lng: parseFloat(venue.longitude)
+      }
+      : {
+        lat: parseFloat(Marker.defaults.location.latitude),
+        lng: parseFloat(Marker.defaults.location.longitude)
+      }
+    ;
 
     // marker icon
-    markerSettings.icon = markerSettings.pinSymbol;
+    markerSettings.icon = Marker.defaults.styling;
     markerSettings.icon.labelOrigin =
       new google.maps.Point(
-        markerSettings.icon.labelOriginX,
-        markerSettings.icon.labelOriginY
+        Marker.defaults.styling.labelOriginX,
+        Marker.defaults.styling.labelOriginY
       )
     ;
 
+    // marker label
+    markerSettings.label = markerSettings.labelStyling;
+    markerSettings.label.text = venue[markerSettings.labelKey].toString();
+
     // rollover title
-    markerSettings.title = markerSettings.location[markerSettings.titleKey].toString();
+    markerSettings.title = venue[markerSettings.titleKey].toString();
 
-    // parent constructor call
-    super({
-      icon: markerSettings.icon,
-      position: markerSettings.position,
-      map: markerSettings.map,
-      label: markerSettings.label,
-      title: markerSettings.title
-    });
+    // this marker is venue aware
+    markerSettings.venue = venue;
 
-    this.venue = options.location;
-    const marker = this;
-    this.addListener('click', (event) => {
-      console.log('marker clicked event: ', event, ' marker: ', marker);
-    });
+    return new Marker(markerSettings);
   }
-  openInfoWindow() { this.infoWindow.open(this.map, this); }
-  closeInfoWindow() { this.infoWindow.close(); }
-  isInfoWindowOpen() {
-    const infoWindowMap = this.infoWindow.getMap();
-    return (
-      infoWindowMap !== undefined
-      && infoWindowMap !== null
-    );
+
+  static fromEvent(event: CalendarEvent, markerOptions: MarkerOptions = {}) {
+    return Marker.fromVenue(event.venue);
   }
 }

@@ -16,6 +16,7 @@ import { DayOfWeekService } from '../common/services/day-of-week.service';
 export class HomeComponent implements AfterViewInit {
   weeklyEvents: BehaviorSubject<WeeklyEvent[]> = new BehaviorSubject([]);
   _selectedDay: string;
+  _selectedEvent: WeeklyEvent = null;
 
   constructor(
     private router: Router,
@@ -59,6 +60,16 @@ export class HomeComponent implements AfterViewInit {
       this.eventDataService.events.value
         .filter(event => event.day_of_week === this.selectedDay)
     );
+  }
+
+  get selectedEvent() { return this._selectedEvent; }
+  set selectedEvent(value) {
+    console.log('selectEvent updated on HomeComponent');
+    this._selectedEvent = value;
+  }
+  onSelectEvent(event) {
+    console.log('HomeComponent heard EventsListComponent select event: ', event);
+    this.selectedEvent = event;
   }
 
 
