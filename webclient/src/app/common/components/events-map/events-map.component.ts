@@ -53,8 +53,8 @@ export class EventsMapComponent implements OnInit, AfterViewInit {
     this.events.subscribe(events => {
       if (this.events.value.length > 0) {
         this.resetMap();
-        this.refreshMarkers(); // eagerly pre-instantiated (event.venue.marker)
-        InfoWindowService.decorateEventsWithInfoWindows(this.events.value); // semi-lazily instantiated (event.infowindow)
+        this.refreshMarkers(); // eagerly pre-instantiated on venues webservice-fetch (event.venue.marker)
+        InfoWindowService.decorateEventsWithInfoWindows(this.events.value); // semi-lazily instantiated on filter/sort/etc (event.infoWindow)
       }
     });
   }
@@ -87,9 +87,7 @@ export class EventsMapComponent implements OnInit, AfterViewInit {
   }
   onMapClick(map) {
     this.closeAllInfoWindows();
-    if (this.selectedEvent !== null) {
-      this.selectedEvent.isSelected = false;
-    }
+    if (this.selectedEvent !== null) { this.selectedEvent.isSelected = false; } // map click same-select event issue can maybe be fixed here
   }
   resetMap() {
     if (this.map === undefined) { return; }
@@ -111,36 +109,25 @@ export class EventsMapComponent implements OnInit, AfterViewInit {
   }
   showMarkers() {
     this._extractMarkers();
-    if (this.markers.length > 0) {
-      this._displayMarkers();
-    }
+    if (this.markers.length > 0) { this._displayMarkers(); }
   }
   removeMarkers() {
     if (this.markers === undefined) { return; }
-    this.markers.forEach(marker => {
-      marker.setMap(null);
-    });
+    this.markers.forEach( marker => marker.setMap(null) );
   }
   _extractMarkers() {
-    this.markers = _
-      .map(this.events.value, event => event.venue)
-      .map(venue => venue.marker)
-    ;
+    this.markers = _.map(this.events.value, event => event.venue.marker);
     this.subscribeToMarkerClicks();
   }
   _displayMarkers() {
-    if (this.markers === undefined) { return; }
-    this.markers.forEach(marker => {
-      marker.setMap(this.map);
-    });
+    if (this.markers === undefined || this.map === undefined) { return; }
+    this.markers.forEach( marker => marker.setMap(this.map) );
   }
   subscribeToMarkerClicks() {
-    this.markerClickSubscriptions.forEach(subscription => subscription.unsubscribe());
+    this.markerClickSubscriptions.forEach( subscription => subscription.unsubscribe() );
     this.markers.forEach(marker => {
       this.markerClickSubscriptions.push(
-        marker.clicked.subscribe(clickedMarker => {
-          this.onMarkerClick(clickedMarker);
-        })
+        marker.clicked.subscribe( clickedMarker => this.onMarkerClick(clickedMarker) )
       );
     });
   }
@@ -150,10 +137,10 @@ export class EventsMapComponent implements OnInit, AfterViewInit {
       event.infoWindow.close();
     } else {
       this.closeAllInfoWindows();
-      this.selectedEvent = event;
+      this.selectedEvent = event; // updating selectedEvent automatically opens the infoWindow
     }
     event.isSelected = event.infoWindow.isOpen;
-    if (!event.isSelected) {this._selectedEvent = null;}
+    if (!event.isSelected) { this._selectedEvent = null; }
   }
 
   /**
