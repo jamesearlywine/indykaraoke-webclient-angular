@@ -30,6 +30,16 @@ export class HomeComponent implements AfterViewInit {
     this.selectedDay = this.dayOfWeekService.calculateDOW();
   }
 
+  get selectedDay() { return this._selectedDay; }
+  set selectedDay(value: string) {
+    this._selectedDay = value;
+    this.updateWeeklyEvents();
+  }
+
+  get selectedEvent() { return this._selectedEvent; }
+  set selectedEvent(value) { this._selectedEvent = value; }
+  onSelectEvent(event) { this.selectedEvent = event; }
+
   ngAfterViewInit() {
     this.doScroll();
     zip(
@@ -38,12 +48,6 @@ export class HomeComponent implements AfterViewInit {
     ).subscribe(([compilationComplete, events]) => {
       if (compilationComplete) { this.updateWeeklyEvents(); }
     });
-  }
-
-  get selectedDay() { return this._selectedDay; }
-  set selectedDay(value: string) {
-    this._selectedDay = value;
-    this.updateWeeklyEvents();
   }
 
   doScroll() {
@@ -62,15 +66,6 @@ export class HomeComponent implements AfterViewInit {
     );
   }
 
-  get selectedEvent() { return this._selectedEvent; }
-  set selectedEvent(value) {
-    console.log('selectEvent updated on HomeComponent');
-    this._selectedEvent = value;
-  }
-  onSelectEvent(event) {
-    console.log('HomeComponent heard EventsListComponent select event: ', event);
-    this.selectedEvent = event;
-  }
 
 
 }
