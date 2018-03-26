@@ -25,27 +25,19 @@ export class EventsListComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.events.subscribe( events => this.deselectAllEvents() );
-    this.selectedEventChange.subscribe(event => {
-      this.deselectAllEventsExcept(event);
-      console.log('eventlist saw selectEvent change');
-    });
+    this.selectedEventChange.subscribe( event => this.onSelectedEventChange(event) );
   }
+  onSelectedEventChange(event) { this.deselectAllEventsExcept(event); }
+  onEventSelectedChange(event: WeeklyEvent) { this.selectedEvent = (event.isSelected) ? event : null; }
 
   deselectAllEvents() { this.events.value.forEach(event => event.deselect()); }
   deselectAllEventsExcept(excludedEvent) {
-    if (excludedEvent === null) { return; }
+    if (excludedEvent === null) { return this.deselectAllEvents(); }
     this.events.value
       .filter(event => event.id !== excludedEvent.id)
       .forEach(event => event.deselect())
     ;
   }
 
-  onEventSelectedChange(event: WeeklyEvent) {
-    if (event.isSelected) {
-      this.selectedEvent = event;
-    } else {
-      this.selectedEvent = null;
-    }
-  }
 
 }
