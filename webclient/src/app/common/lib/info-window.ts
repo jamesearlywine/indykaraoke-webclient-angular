@@ -29,6 +29,9 @@ export class InfoWindow extends google.maps.InfoWindow {
   static fromEvent(event: CalendarEvent) {
     return new InfoWindow({event: event});
   }
+  static infoWindowComponent() {
+
+  }
 
   constructor(options = <any> {}) {
     super(

@@ -1,6 +1,4 @@
-/**
- * General Stuff
- */
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
 html, body {
   height: 100%;
@@ -243,10 +241,6 @@ map-info-window
    display: block;
    position: relative;
    min-width: 55px;
-}
-.map-info-window .venue-logo-image-none-container
-{
-
 }
 .map-info-window .venue-logo-image-none,
 .map-info-window .venue-logo-image

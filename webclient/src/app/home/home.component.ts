@@ -8,6 +8,7 @@ import { VenueDataService } from '../common/services/venue-data.service';
 import { DataService } from '../common/services/data.service';
 import { WeeklyEvent } from '../common/lib/weekly-event';
 import { DayOfWeekService } from '../common/services/day-of-week.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   templateUrl: './home.component.html',
@@ -17,12 +18,12 @@ export class HomeComponent implements AfterViewInit {
   weeklyEvents: BehaviorSubject<WeeklyEvent[]> = new BehaviorSubject([]);
   _selectedDay: string;
   _selectedEvent: WeeklyEvent = null;
+  environment = environment;
 
   constructor(
     private router: Router,
     private windowService: WindowService,
     private eventDataService: EventDataService,
-    private venueDataService: VenueDataService,
     private dataService: DataService,
     private dayOfWeekService: DayOfWeekService
   ) {
